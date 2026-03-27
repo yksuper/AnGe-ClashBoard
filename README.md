@@ -128,8 +128,11 @@ docker run -d \
   --name ange-clashboard \
   -p 2048:2048 \
   -v ./data:/app/data \
+  --restart unless-stopped \
   ghcr.io/liandu2024/ange-clashboard:latest
 ```
+
+上面的 `--restart unless-stopped` 表示容器会在 Docker 服务重启后自动拉起，除非你手动停止它。
 
 ## Docker 无损升级
 
