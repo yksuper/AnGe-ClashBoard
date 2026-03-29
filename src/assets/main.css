@@ -613,6 +613,18 @@ div::-webkit-scrollbar-thumb:hover {
   padding-top: 0.75rem !important;
 }
 
+.icon-settings-tabs {
+  margin-left: auto;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.icon-settings-tabs .tab {
+  min-width: 7rem !important;
+  padding-inline: 0.75rem !important;
+  white-space: nowrap;
+}
+
 .settings-menu-item {
   border-radius: 0;
   color: color-mix(in srgb, var(--color-base-content) 88%, transparent);
