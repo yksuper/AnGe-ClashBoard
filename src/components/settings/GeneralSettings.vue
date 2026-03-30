@@ -51,8 +51,10 @@
           <input
             :type="showAccessPassword ? 'text' : 'password'"
             class="grow"
-            v-model="accessPassword"
+            v-model="accessPasswordDraft"
             :placeholder="$t('accessPassword')"
+            @blur="commitAccessPassword"
+            @keydown.enter="commitAccessPassword"
           />
           <button
             type="button"
@@ -223,6 +225,7 @@ const isVisibleSwipeInTabs = useIsSettingVisible(k.swipeInTabs)
 const isVisibleDisablePullToRefresh = useIsSettingVisible(k.disablePullToRefresh)
 const isVisibleDisplayAllFeatures = useIsSettingVisible(k.displayAllFeatures)
 const showAccessPassword = ref(false)
+const accessPasswordDraft = ref(accessPassword.value)
 
 watch(accessPasswordEnabled, (enabled) => {
   if (!enabled) {
@@ -233,13 +236,23 @@ watch(accessPasswordEnabled, (enabled) => {
   setAccessAuthenticated(false)
 })
 
-watch(accessPassword, () => {
+watch(accessPassword, (value) => {
+  accessPasswordDraft.value = value
+
   if (!accessPasswordEnabled.value) {
     return
   }
 
   setAccessAuthenticated(false)
 })
+
+const commitAccessPassword = () => {
+  if (accessPasswordDraft.value === accessPassword.value) {
+    return
+  }
+
+  accessPassword.value = accessPasswordDraft.value
+}
 
 const hasVisibleGeneralItems = computed(() => {
   return (

@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.79](https://github.com/liandu2024/AnGe-ClashBoard/compare/v1.78...v1.79) (2026-03-30)
+
+### Bug Fixes
+
+* fix a critical password-access bug by keeping password edits in a local draft until blur or Enter, preventing half-entered passwords from immediately replacing the saved login password and forcing users back to the login screen
+
 ## [1.78](https://github.com/liandu2024/AnGe-ClashBoard/compare/v1.77...v1.78) (2026-03-30)
 
 ### Bug Fixes
